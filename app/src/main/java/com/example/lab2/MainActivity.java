@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -13,39 +12,33 @@ import androidx.constraintlayout.widget.ConstraintSet;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView textViewToRemove;
+    private TextView textViewToMove;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_1);
         ToggleButton toggleButton = findViewById(R.id.toggleButton);
-        textViewToRemove = findViewById(R.id.text_box_to_move);
+        textViewToMove = findViewById(R.id.text_box_to_move);
 
         toggleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ConstraintLayout parentLayout = (ConstraintLayout) textViewToRemove.getParent();
-                parentLayout.removeView(textViewToRemove);
+                ConstraintLayout parentLayout = (ConstraintLayout) textViewToMove.getParent();
 
                 ConstraintSet constraintSet = new ConstraintSet();
                 constraintSet.clone(parentLayout);
 
-                TextView newTextView = CreateTextView();
-                parentLayout.addView(newTextView);
+                constraintSet.clear(R.id.text_box_to_move, ConstraintSet.TOP);
+                constraintSet.clear(R.id.text_box_to_move, ConstraintSet.LEFT);
+                constraintSet.clear(R.id.text_box_to_move, ConstraintSet.RIGHT);
+                constraintSet.clear(R.id.text_box_to_move, ConstraintSet.BOTTOM);
 
-                constraintSet.connect(newTextView.getId(), ConstraintSet.END, parentLayout.getId(), ConstraintSet.END);
-                constraintSet.connect(newTextView.getId(), ConstraintSet.BOTTOM, parentLayout.getId(), ConstraintSet.BOTTOM);
+                constraintSet.connect(R.id.text_box_to_move, ConstraintSet.BOTTOM, R.id.main_layout, ConstraintSet.BOTTOM);
+                constraintSet.connect(R.id.text_box_to_move, ConstraintSet.RIGHT, R.id.main_layout, ConstraintSet.RIGHT);
 
                 constraintSet.applyTo(parentLayout);
             }
         });
-    }
-
-    private TextView CreateTextView(){
-        TextView newTextView = new TextView(this);
-        newTextView.setText("Text1");
-        newTextView.setId(View.generateViewId());
-        return newTextView;
     }
 }
