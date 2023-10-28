@@ -22,41 +22,38 @@ public class MainActivity extends AppCompatActivity {
         toggleButton = findViewById(R.id.toggleButton);
         textViewToMove = findViewById(R.id.text_box_to_move);
 
-        toggleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (toggleButton.isChecked()) {
-                    ConstraintLayout parentLayout = (ConstraintLayout) textViewToMove.getParent();
+        toggleButton.setOnClickListener(view -> {
+            if (toggleButton.isChecked()) {
+                ConstraintLayout parentLayout = (ConstraintLayout) textViewToMove.getParent();
 
-                    ConstraintSet constraintSet = new ConstraintSet();
-                    constraintSet.clone(parentLayout);
+                ConstraintSet constraintSet = new ConstraintSet();
+                constraintSet.clone(parentLayout);
 
-                    constraintSet.clear(R.id.text_box_to_move, ConstraintSet.TOP);
-                    constraintSet.clear(R.id.text_box_to_move, ConstraintSet.LEFT);
-                    constraintSet.clear(R.id.text_box_to_move, ConstraintSet.RIGHT);
-                    constraintSet.clear(R.id.text_box_to_move, ConstraintSet.BOTTOM);
+                constraintSet.clear(R.id.text_box_to_move, ConstraintSet.TOP);
+                constraintSet.clear(R.id.text_box_to_move, ConstraintSet.LEFT);
+                constraintSet.clear(R.id.text_box_to_move, ConstraintSet.RIGHT);
+                constraintSet.clear(R.id.text_box_to_move, ConstraintSet.BOTTOM);
 
-                    constraintSet.connect(R.id.text_box_to_move, ConstraintSet.BOTTOM, R.id.main_layout, ConstraintSet.BOTTOM);
-                    constraintSet.connect(R.id.text_box_to_move, ConstraintSet.RIGHT, R.id.main_layout, ConstraintSet.RIGHT);
+                constraintSet.connect(R.id.text_box_to_move, ConstraintSet.BOTTOM, R.id.main_layout, ConstraintSet.BOTTOM);
+                constraintSet.connect(R.id.text_box_to_move, ConstraintSet.RIGHT, R.id.main_layout, ConstraintSet.RIGHT);
 
-                    constraintSet.applyTo(parentLayout);
-                }
-                else {
-                    ConstraintLayout parentLayout = (ConstraintLayout) textViewToMove.getParent();
+                constraintSet.applyTo(parentLayout);
+            }
+            else {
+                ConstraintLayout parentLayout = (ConstraintLayout) textViewToMove.getParent();
 
-                    ConstraintSet constraintSet = new ConstraintSet();
-                    constraintSet.clone(parentLayout);
+                ConstraintSet constraintSet = new ConstraintSet();
+                constraintSet.clone(parentLayout);
 
-                    constraintSet.clear(R.id.text_box_to_move, ConstraintSet.TOP);
-                    constraintSet.clear(R.id.text_box_to_move, ConstraintSet.LEFT);
-                    constraintSet.clear(R.id.text_box_to_move, ConstraintSet.RIGHT);
-                    constraintSet.clear(R.id.text_box_to_move, ConstraintSet.BOTTOM);
+                constraintSet.clear(R.id.text_box_to_move, ConstraintSet.TOP);
+                constraintSet.clear(R.id.text_box_to_move, ConstraintSet.LEFT);
+                constraintSet.clear(R.id.text_box_to_move, ConstraintSet.RIGHT);
+                constraintSet.clear(R.id.text_box_to_move, ConstraintSet.BOTTOM);
 
-                    constraintSet.connect(R.id.text_box_to_move, ConstraintSet.TOP, R.id.main_layout, ConstraintSet.TOP);
-                    constraintSet.connect(R.id.text_box_to_move, ConstraintSet.RIGHT, R.id.main_layout, ConstraintSet.RIGHT);
+                constraintSet.connect(R.id.text_box_to_move, ConstraintSet.TOP, R.id.main_layout, ConstraintSet.TOP);
+                constraintSet.connect(R.id.text_box_to_move, ConstraintSet.RIGHT, R.id.main_layout, ConstraintSet.RIGHT);
 
-                    constraintSet.applyTo(parentLayout);
-                }
+                constraintSet.applyTo(parentLayout);
             }
         });
     }
