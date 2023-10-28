@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -25,35 +26,56 @@ public class MainActivity extends AppCompatActivity {
     private ArrayAdapter<String> adapter;
     private EditText textInput;
 
+    // Task3_1
+    private LinearLayout itemsContainer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //         Task2();
         Task3();
+//        Task3_1();
+    }
+
+    private void Task3_1(){
+        setContentView(R.layout.layout_2_1);
+
+        addItemButton = findViewById(R.id.add_item_button);
+        textInput = findViewById(R.id.input);
+
+        addItemButton.setOnClickListener(view -> {
+            TextView newItem = new TextView(this);
+            itemsContainer = findViewById(R.id.items_container);
+
+            Drawable drawable = getResources().getDrawable(R.drawable.border);
+            newItem.setBackground(drawable);
+            newItem.setPadding(10,10,10,10);
+
+            String text = String.valueOf(textInput.getText());
+
+            if (!text.isEmpty()){
+                newItem.setText(text);
+                itemsContainer.addView(newItem);
+                textInput.setText("");
+            }
+        });
     }
 
     private void Task3(){
         setContentView(R.layout.layout_2);
-
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
-
         addItemButton = findViewById(R.id.add_item_button);
         spinner = findViewById(R.id.spinner);
         textInput = findViewById(R.id.input);
 
         addItemButton.setOnClickListener(view -> {
-//            TextView newItem = new TextView(this);
-//
-//            Drawable drawable = getResources().getDrawable(R.drawable.border);
-//            newItem.setBackground(drawable);
-
             String text = String.valueOf(textInput.getText());
-//            newItem.setText(text);
 
-            textInput.setText("");
-
-            adapter.add(text);
-            spinner.setAdapter(adapter);
+            if (!text.isEmpty()){
+                textInput.setText("");
+                adapter.add(text);
+                spinner.setAdapter(adapter);
+            }
         });
     }
 
