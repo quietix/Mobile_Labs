@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -42,7 +43,7 @@ public class MainActivity2 extends AppCompatActivity {
         };
 
         ListView countriesList = findViewById(R.id.countries_list);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, countries);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_single_choice, countries);
         countriesList.setAdapter(adapter);
 
         makeListItemsTouchable(countriesList);
