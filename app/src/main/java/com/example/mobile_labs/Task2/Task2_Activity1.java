@@ -29,7 +29,7 @@ public class Task2_Activity1 extends AppCompatActivity {
         step = findViewById(R.id.stepTextBox);
 
         exitButton.setOnClickListener(v -> {
-            finish();
+            finishAffinity();
         });
 
         calculateButton.setOnClickListener(v -> {
