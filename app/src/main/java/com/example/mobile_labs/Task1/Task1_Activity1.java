@@ -1,21 +1,18 @@
-package com.example.mobile_labs;
+package com.example.mobile_labs.Task1;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.mobile_labs.R;
+
+public class Task1_Activity1 extends AppCompatActivity {
     private static final int REQUEST_CODE = 1;
     public TextView selectedCountryTextView;
     private Button showCountriesButton;
@@ -32,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showScreen2(View view){
-        Intent intent1 = new Intent(getApplicationContext(), MainActivity2.class);
+        Intent intent1 = new Intent(getApplicationContext(), Task1_Activity2.class);
         startActivityForResult(intent1, REQUEST_CODE);
     }
 

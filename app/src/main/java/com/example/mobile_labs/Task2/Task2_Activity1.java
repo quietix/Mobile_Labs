@@ -1,4 +1,4 @@
-package com.example.mobile_labs;
+package com.example.mobile_labs.Task2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,10 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.mobile_labs.R;
 
-public class Task2Activity extends AppCompatActivity {
+public class Task2_Activity1 extends AppCompatActivity {
     Button exitButton;
     Button calculateButton;
     EditText limit1;
@@ -41,7 +40,7 @@ public class Task2Activity extends AppCompatActivity {
                         limit2.getText().toString(),
                         step.getText().toString()
                 };
-                Intent intent = new Intent(this, Task2Activity_2.class);
+                Intent intent = new Intent(this, Task2_Activity2.class);
                 intent.putExtra("inputData", inputs);
                 startActivity(intent);
             }

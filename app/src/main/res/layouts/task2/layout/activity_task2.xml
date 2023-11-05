@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Task2Activity">
+    tools:context=".Task2.Task2_Activity1">
 
     <EditText
         android:id="@+id/limit1TextBox"

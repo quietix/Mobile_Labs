@@ -13,27 +13,31 @@
         android:theme="@style/Theme.Mobile_Labs"
         tools:targetApi="31">
         <activity
-            android:name=".Task2Activity_2"
+            android:name=".Task3.Activity1"
+            android:exported="false" />
+        <activity
+            android:name=".Task2.Task2_Activity2"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".Task2Activity"
+            android:name=".Task2.Task2_Activity1"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity2"
-            android:exported="false">
-        </activity>
+            android:name=".Task1.Task1_Activity2"
+            android:exported="false"></activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Task1.Task1_Activity1"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

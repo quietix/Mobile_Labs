@@ -1,21 +1,21 @@
-package com.example.mobile_labs;
+package com.example.mobile_labs.Task2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Pair;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
-import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import static java.lang.Math.*;
 
-public class Task2Activity_2 extends AppCompatActivity {
+import com.example.mobile_labs.R;
+
+public class Task2_Activity2 extends AppCompatActivity {
     Button homeButton;
     GridView gvResults;
     ArrayAdapter<String> adapter;
@@ -28,7 +28,7 @@ public class Task2Activity_2 extends AppCompatActivity {
         homeButton = findViewById(R.id.homeButton);
 
         homeButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, Task2Activity.class);
+            Intent intent = new Intent(this, Task2_Activity1.class);
             startActivity(intent);
         });
 

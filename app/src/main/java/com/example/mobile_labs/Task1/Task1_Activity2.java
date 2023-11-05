@@ -1,4 +1,4 @@
-package com.example.mobile_labs;
+package com.example.mobile_labs.Task1;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,9 +10,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
-public class MainActivity2 extends AppCompatActivity {
+import com.example.mobile_labs.R;
+
+public class Task1_Activity2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
