@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Mobile_Labs"
         tools:targetApi="31">
         <activity
+            android:name=".Task1_OptionsMenu"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
