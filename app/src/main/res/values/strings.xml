@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Mobile_Labs</string>
+    <string name="show_popup_menu">Show popup menu</string>
 </resources>
