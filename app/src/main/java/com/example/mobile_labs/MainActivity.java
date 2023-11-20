@@ -4,13 +4,17 @@ import static android.widget.Toast.makeText;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -27,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     Button button;
     PopupMenu popupMenu;
     Boolean needReverseChecker = false;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,32 @@ public class MainActivity extends AppCompatActivity {
                 showPopupMenu();
             }
         });
+
+        textView = (TextView) findViewById(R.id.textView);
+        registerForContextMenu(textView);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        // you can set menu header with title icon etc
+        menu.setHeaderTitle("Choose a color");
+        // add menu items
+        menu.add(0, v.getId(), 0, "Yellow");
+        menu.add(0, v.getId(), 0, "Gray");
+        menu.add(0, v.getId(), 0, "Cyan");
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        if (item.getTitle() == "Yellow") {
+            textView.setTextColor(Color.YELLOW);
+        } else if (item.getTitle() == "Gray") {
+            textView.setTextColor(Color.GRAY);
+        } else if (item.getTitle() == "Cyan") {
+            textView.setTextColor(Color.CYAN);
+        }
+        return true;
     }
 
     private void fillPopupMenu(List<String> data) {
