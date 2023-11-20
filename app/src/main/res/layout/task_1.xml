@@ -18,7 +18,7 @@
         android:padding="15dp"/>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/context_menu_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -29,6 +29,22 @@
         android:background="@color/black"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/popupMenuButton"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="15dp"
+        android:padding="15dp"/>
+
+    <TextView
+        android:id="@+id/action_bar_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Click me to activate action bar"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:background="#03A9F4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/context_menu_button"
         android:layout_marginTop="15dp"
         android:layout_marginStart="15dp"
         android:padding="15dp"/>

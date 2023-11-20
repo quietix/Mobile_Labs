@@ -1,12 +1,9 @@
 package com.example.mobile_labs;
 
-import static android.widget.Toast.makeText;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.ActionMode;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,13 +14,13 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-
-import kotlin.sequences.Sequence;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,12 +29,14 @@ public class MainActivity extends AppCompatActivity {
     PopupMenu popupMenu;
     Boolean needReverseChecker = false;
     TextView textView;
+    private androidx.appcompat.view.ActionMode myActMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.task_1);
 
+        // Popup menu
         button = findViewById(R.id.popupMenuButton);
         fillPopupMenu(generateData(needReverseChecker));
 
@@ -48,9 +47,58 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        textView = (TextView) findViewById(R.id.textView);
+        // Context menu
+        textView = (TextView) findViewById(R.id.context_menu_button);
         registerForContextMenu(textView);
+
+        // Action bar
+        TextView textView = findViewById(R.id.action_bar_text_view);
+        textView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (myActMode != null) {
+                    return false;
+                }
+                myActMode = startSupportActionMode(myActModeCallback);
+
+                return true;
+            }
+        });
     }
+
+    private final androidx.appcompat.view.ActionMode.Callback myActModeCallback = new androidx.appcompat.view.ActionMode.Callback() {
+
+        @Override
+        public boolean onCreateActionMode(androidx.appcompat.view.ActionMode mode, Menu menu) {
+            mode.getMenuInflater().inflate(R.menu.action_bar_menu, menu);
+            mode.setTitle("Select option here");
+            return true;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(androidx.appcompat.view.ActionMode mode, Menu menu) {
+            return false;
+        }
+
+        @Override
+        public boolean onActionItemClicked(androidx.appcompat.view.ActionMode mode, MenuItem item) {
+            if (item.getItemId() == R.id.option_1){
+                showToast("Selected Selection 1");
+
+                TextView tv = findViewById(R.id.action_bar_text_view);
+                tv.setBackgroundColor(Color.parseColor("#d71868"));
+                tv.setTypeface(tv.getTypeface(), Typeface.BOLD);
+
+                return true;
+            }
+            return false;
+        }
+
+        @Override
+        public void onDestroyActionMode(androidx.appcompat.view.ActionMode mode) {
+            myActMode = null;
+        }
+    };
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
